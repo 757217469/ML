@@ -18,7 +18,7 @@ mpl.rcParams['axes.unicode_minus'] = False
 '''
 sklearn.mixture.GaussianMixture在0.18版本以前是sklearn.mixture.GMM, 两者的参数基本类型,这里主要介绍GaussianMixture的相关参数
 属性参数:
-n_components:混合组合的个数, 默认为1, 可以李姐为聚类/分类数量
+n_components:混合组合的个数, 默认为1, 可以理解为聚类/分类数量
 covariance_type: 给定协方差的类型, 可选:full,tied,diag,spherical, 默认为full; full: 每个组件都有自己的公用的协方差矩阵, tied: 所有组件公用一个协方差矩阵, diag: 每个组件都有自己的斜对角协方差矩阵, spherical: 每个组件都有自己单独的方差值
 tol: 默认1e-3, 收敛阈值, 如果再迭代过程中, 平均增益小于该值的时候, EM算法结束
 reg_covar: 协方差对角线上的非负正则化参数, 默认为0
@@ -43,7 +43,7 @@ def trainModel(style, x):
         # 效果输出
         print('类别概率:\t', g.weights_)
         print('均值:\n', g.means_, '\n')
-        print('方差:\n', g.covariances_, 'n')
+        print('方差:\n', g.covariances_, '\n')
         print('似然函数的值:\n', g.lower_bound_)
         mu1, mu2 = g.means_
         sigma1, sigma2 = g.covariances_
@@ -118,6 +118,7 @@ data = np.vstack((data1, data2))
 # 产生数据对应的y值
 y1 = np.array([True] * N + [False] * M)
 y2 = ~y1
+
 
 # 预测结果(得到概率密度值)
 style = 'sklearn'
